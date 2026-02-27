@@ -4,6 +4,9 @@ path=$(pwd)
 
 distro=$(cat /etc/os-release | grep "^ID=" | cut -d "=" -f2 | sed 's/"//g')
 
+echo
+echo
+echo
 echo "Initiating Tomcat Installation."
 echo "Please enter the port number (use between 2 and 65535):"
 read port
