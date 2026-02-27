@@ -65,3 +65,57 @@ echo -e "Access it using: # http://$(curl -s ifconfig.me):$port\t#"
 echo "                 ################################"
 
 echo -e "\nTo access Manager and Host-manager, you can use: \nUser:\t\tadmin \nPassword: \tadmin\n"
+echo 
+echo
+
+
+
+
+
+
+echo
+echo "Do you want to exit from this script? Or perform another operation?"
+echo "1) Exit"
+echo "2) Install Jenkins"
+echo "3) Install Maven"
+echo
+
+read -p "Enter your choice [1-3]: " choice
+
+case $choice in
+    1)
+        echo "Exiting script..."
+        exit 0
+        ;;
+
+    2)
+        echo "Installing Jenkins again..."
+        cd
+        sudo yum install git -y > /dev/null 2>&1
+        rm -rf install_jenkins_RHEL_Ubuntu
+        git clone https://github.com/nagaraj602/install_jenkins_RHEL_Ubuntu.git > /dev/null 2>&1
+        cd install_jenkins_RHEL_Ubuntu || exit
+        bash jenkins.sh
+        ;;
+
+    3)
+        echo "Installing Maven..."
+        cd
+        sudo yum install git -y > /dev/null 2>&1
+        rm -rf install_maven_RHEL_Ubuntu
+        git clone https://github.com/nagaraj602/install_maven_RHEL_Ubuntu.git > /dev/null 2>&1
+        cd install_maven_RHEL_Ubuntu || exit
+        bash maven.sh
+        ;;
+
+    *)
+        echo "Invalid option. Exiting."
+        exit 1
+        ;;
+esac
+
+
+
+
+
+
