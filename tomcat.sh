@@ -9,7 +9,30 @@ echo
 echo
 echo "Initiating Tomcat Installation."
 echo "Please enter the port number (use between 2 and 65535):"
-read port
+read -t 15 port
+
+# Function to check if port is free
+is_port_free() {
+    ! ss -tuln | grep -q ":$1 "
+}
+
+# If user did NOT enter anything (timeout case)
+if [ -z "$port" ]; then
+    port=8080
+    while ! is_port_free "$port"; do
+        port=$((port+1))
+    done
+else
+    # If user entered a value, validate and re-ask if invalid/busy
+    while ! [[ "$port" =~ ^[0-9]+$ ]] || \
+          [ "$port" -lt 1 ] || \
+          [ "$port" -gt 65535 ] || \
+          ! is_port_free "$port"
+    do
+        echo "Invalid or busy port. Please enter another port:"
+        read port
+    done
+fi
 
 echo -e "\nThank you for selecting port: $port \n\n\nInstalling Tomcat 11 with Java OpenJDK 25 on $distro..."
 
