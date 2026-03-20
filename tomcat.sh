@@ -61,7 +61,7 @@ fi
 sudo useradd -m -U -d /opt/tomcat -s /bin/false tomcat > /dev/null
 
 cd /tmp
-wget https://dlcdn.apache.org/tomcat/tomcat-11/v11.0.18/bin/apache-tomcat-11.0.18.tar.gz &> /dev/null
+wget https://dlcdn.apache.org/tomcat/tomcat-11/v11.0.18/bin/apache-tomcat-11.0.18.tar.gz > /dev/null 2>&1
 
 sudo mkdir -p /opt/tomcat
 sudo tar xf apache-tomcat-11.0.18.tar.gz -C /opt/tomcat --strip-components=1 > /dev/null
