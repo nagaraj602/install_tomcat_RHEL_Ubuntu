@@ -1,4 +1,5 @@
 #!/bin/bash
+version=11.0.21
 
 path=$(pwd)
 
@@ -61,11 +62,11 @@ fi
 sudo useradd -m -U -d /opt/tomcat -s /bin/false tomcat > /dev/null
 
 cd /tmp
-wget https://dlcdn.apache.org/tomcat/tomcat-11/v11.0.18/bin/apache-tomcat-11.0.18.tar.gz > /dev/null 2>&1
+wget https://dlcdn.apache.org/tomcat/tomcat-11/v$version/bin/apache-tomcat-$version.tar.gz > /dev/null 2>&1
 
 sudo mkdir -p /opt/tomcat
-sudo tar xf apache-tomcat-11.0.18.tar.gz -C /opt/tomcat --strip-components=1 > /dev/null
-rm -f apache-tomcat-11.0.18.tar.gz
+sudo tar xf apache-tomcat-$version.tar.gz -C /opt/tomcat --strip-components=1 > /dev/null
+rm -f apache-tomcat-$version.tar.gz
 
 sudo chown -R tomcat:tomcat /opt/tomcat > /dev/null
 sudo chmod -R 755 /opt/tomcat > /dev/null
