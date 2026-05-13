@@ -54,7 +54,8 @@ if [ "$distro" = "rhel" ] || [ "$distro" == "amzn" ]; then
     sudo yum install wget curl java-25-openjdk-devel -y > /dev/null
 elif [ "$distro" = "ubuntu" ]; then
     sudo apt-get update -y > /dev/null
-    sudo apt-get install wget curl openjdk-25-jdk -y > /dev/null
+    sudo apt-get install wget curl openjdk-25-jdk -y > /dev/null 2>&1
+    sudo yum install java-25-amazon-corretto -y > /dev/null 2>&1
 else
     echo "Unsupported Distribution - Only RHEL and Ubuntu supported."
     exit 1
