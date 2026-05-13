@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=11.0.21
+version=11.0.22
 
 path=$(pwd)
 
