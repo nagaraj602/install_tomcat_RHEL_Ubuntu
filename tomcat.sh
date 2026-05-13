@@ -49,7 +49,7 @@ if id tomcat &>/dev/null || [ -d /opt/tomcat ]; then
     sudo systemctl daemon-reload
 fi
 
-if [ "$distro" = "rhel" ]; then
+if [ "$distro" = "rhel" ] || [ "$distro" == "amzn" ]; then
     sudo yum update -y > /dev/null
     sudo yum install wget curl java-25-openjdk-devel -y > /dev/null
 elif [ "$distro" = "ubuntu" ]; then
